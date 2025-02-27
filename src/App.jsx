@@ -1,12 +1,14 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import './App.css';
+import './Styles/App.css';
 import {
-  Home, About, Applications, Contact, Dashboard, EmployerProfile,
-  NotFound, PostJob, UserProfile, ForgotPassword, Register, Login,
-  JobDetail, JobList, AdminLayout, UserLayout
+  Home, Applications, Contact, Companies, Company, CompanyDashboard, EmployerProfile, EditProfile, Internships,
+  NotFound, Notifications, PostJob, UserProfile, ForgotPassword, SignUp, StudentDashboard, Login,
+  JobDetail, JobList, AdminLayout, UserLayout, Terms
 } from './pages';
+import { Navbar } from './components';
+import { useStateContext } from './context/ContextProvider';
 
 const AdminRoutes = () => (
   <AdminLayout>
@@ -28,41 +30,79 @@ const ProtectedRoute = ({ isAuthenticated, children }) => {
 };
 
 const App = () => {
-  const isAuthenticated = false; // Replace with actual authentication logic
+  const isAuthenticated = true; // Replace with actual authentication logic
+  const { currentMode } = useStateContext();
+
+  // Function to check if navbar should be hidden
+  const shouldHideNavbar = (pathname) => {
+    const hideNavbarRoutes = ['/login', '/sign-up', '/forgot-password', '*'];
+  
+    // Hide Navbar for user and admin subroutes
+    if (pathname.startsWith('/user') || pathname.startsWith('/admin')) {
+      return true;
+    }
+  
+    return hideNavbarRoutes.includes(pathname);
+  };
 
   return (
-    <div>
+    <div className={currentMode === 'dark' ? 'dark' : ''}>
       <Router>
-        <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/jobs" element={<JobList />} />
-          <Route path="/jobs/:id" element={<JobDetail />} />
+        <NavbarWrapper shouldHideNavbar={shouldHideNavbar}>
+          <Routes>
+            {/* Public Routes */}
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/companies" element={<Companies />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/jobs" element={<JobList />} />
+            <Route path="/jobs/:id" element={<JobDetail />} />
+            <Route path="/terms" element={<Terms />} />
 
-          {/* User Routes */}
-          <Route path="/user" element={<UserRoutes />}>
-            <Route path="profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><UserProfile /></ProtectedRoute>} />
-            <Route path="applications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Applications /></ProtectedRoute>} />
-          </Route>
+            {/* User Routes */}
+            <Route path="/user" element={<UserRoutes />}>
+              <Route path="profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><UserProfile /></ProtectedRoute>} />
+              <Route path="applications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Applications /></ProtectedRoute>} />
+              <Route path="student-dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><StudentDashboard /></ProtectedRoute>} />
+              <Route path="edit-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditProfile /></ProtectedRoute>} />
+              <Route path="companies" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Company /></ProtectedRoute>} />
+              <Route path="internships" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Internships /></ProtectedRoute>} />
+              <Route path="notifications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Notifications /></ProtectedRoute>} />
+            </Route>
 
-          {/* Admin Routes */}
-          <Route path="/admin" element={<AdminRoutes />}>
-            <Route path="dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Dashboard /></ProtectedRoute>} />
-            <Route path="post-job" element={<ProtectedRoute isAuthenticated={isAuthenticated}><PostJob /></ProtectedRoute>} />
-            <Route path="employer-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EmployerProfile /></ProtectedRoute>} />
-          </Route>
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminRoutes />}>
+              <Route path="company-dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CompanyDashboard /></ProtectedRoute>} />
+              <Route path="post-job" element={<ProtectedRoute isAuthenticated={isAuthenticated}><PostJob /></ProtectedRoute>} />
+              <Route path="employer-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EmployerProfile /></ProtectedRoute>} />
+              <Route path="edit-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditProfile /></ProtectedRoute>} />
+            </Route>
 
-          {/* Catch-All Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* Catch-All Route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </NavbarWrapper>
       </Router>
     </div>
+  );
+};
+
+// ✅ Pass shouldHideNavbar as a prop to NavbarWrapper
+const NavbarWrapper = ({ shouldHideNavbar, children }) => {
+  const location = useLocation();
+
+  return (
+    <>
+      {!shouldHideNavbar(location.pathname) && (
+        <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg w-full">
+          <Navbar />
+        </div>
+      )}
+      {children}
+    </>
   );
 };
 
