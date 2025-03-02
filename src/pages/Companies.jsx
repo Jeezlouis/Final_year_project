@@ -96,7 +96,7 @@ const Companies = () => {
   return (
     <div className="bg-main-bg dark:bg-main-dark-bg">
       {/* Landing Section for Internship Students */}
-      <div className="flex pb-40 pt-36 bg-blue-50 dark:bg-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="flex pb-40 pt-36 bg-main-bg dark:bg-main-dark-bg py-12 px-4 sm:px-6 lg:px-8">
         <div className='flex justify-center items-center w-[50%]'>
           <div className="mx-auto ml-4">
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -126,7 +126,7 @@ const Companies = () => {
         </div>
         </div>
       {/* Searchbar Section */}
-      <div className="code-section dark:main-dark-bg">
+      <div className="bg-main-bg dark:bg-main-dark-bg">
         <Searchbar />
       </div>
 
@@ -202,7 +202,7 @@ const Companies = () => {
               {Companies.map((company, index) => (
                 <div
                   key={index}
-                  className="cursor-pointer"
+                  className="cursor-pointer mb-2"
                   onClick={() => handleCardClick(company)}
                 >
                   <CompanyCard

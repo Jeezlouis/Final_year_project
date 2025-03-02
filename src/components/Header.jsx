@@ -36,7 +36,7 @@ const Header = ({ toggleSidebar, fixedHeader }) => {
   return (
     <header className={headerClasses}>
       <div className="flex justify-between items-center">
-        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">Unitern</div>
+        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">Unintern</div>
         {toggleSidebar && (
           <button
             onClick={toggleSidebar}

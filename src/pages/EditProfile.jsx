@@ -52,17 +52,15 @@ const EditProfile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-     
-
+    <div className="min-h-screen bg-gray-100 main-bg dark:bg-main-dark-bg flex flex-col">
       {/* Main Content */}
-      <main className="container mx-auto p-6 flex-1">
-        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-6">Edit Profile</h1>
+      <main className="container mx-auto p-6 flex-1 dark:text-white">
+        <div className="max-w-4xl mx-auto bg-white dark:bg-secondary-dark-bg shadow-lg rounded-lg p-6">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">Edit Profile</h1>
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Avatar URL */}
             <div className="flex-col justify-center items-center">
-            <label htmlFor="avatar-upload" className="cursor-pointer">
+            <label htmlFor="avatar-upload" className="cursor-pointer dark:text-gray-100">
               <img
                 src={userData.avatar || "/path/to/default-avatar.jpg"}
                 alt="Profile Avatar"
@@ -76,18 +74,18 @@ const EditProfile = () => {
                 accept="image/*"
                 placeholder={userData.avatar}
                 onChange={handleChange}
-                className="w-full p-3 border hidden border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent hidden border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <label
                 htmlFor="avatar-upload"
-                className="block text-gray-700 font-semibold mb-2 ml-3 cursor-pointer transition"
+                className="block text-gray-700 font-semibold mb-2 ml-3 cursor-pointer transition dark:text-gray-100"
               >
                 Upload Image
               </label>
             </div>
             {/* Name */}
             <div>
-              <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="name" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Name
               </label>
               <input
@@ -96,13 +94,13 @@ const EditProfile = () => {
                 name="name"
                 value={userData.name}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="email" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Email
               </label>
               <input
@@ -111,13 +109,13 @@ const EditProfile = () => {
                 name="email"
                 value={userData.email}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Location */}
             <div>
-              <label htmlFor="location" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="location" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Location
               </label>
               <input
@@ -126,13 +124,13 @@ const EditProfile = () => {
                 name="location"
                 value={userData.location}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Skills */}
             <div>
-              <label htmlFor="skills" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="skills" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Skills (comma-separated)
               </label>
               <input
@@ -141,11 +139,11 @@ const EditProfile = () => {
                 name="skills"
                 value={userData.skills.join(", ")}
                 onChange={handleSkillsChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <div className="flex flex-wrap gap-2 mt-2">
                 {userData.skills.map((skill, index) => (
-                  <span key={index} className="px-3 py-1 bg-blue-100 text-blue-600 text-sm rounded-full">
+                  <span key={index} className="px-3 py-1 bg-blue-100 dark:bg-main-dark-bg dark:text-blue-300 text-blue-600 text-sm rounded-full">
                     {skill}
                   </span>
                 ))}
@@ -154,7 +152,7 @@ const EditProfile = () => {
 
             {/* Industry */}
             <div>
-              <label htmlFor="industry" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="industry" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Industry
               </label>
               <input
@@ -163,13 +161,13 @@ const EditProfile = () => {
                 name="industry"
                 value={userData.industry}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* Company */}
             <div>
-              <label htmlFor="company" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="company" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Company
               </label>
               <input
@@ -178,13 +176,13 @@ const EditProfile = () => {
                 name="company"
                 value={userData.company}
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-3 border dark:bg-transparent border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             {/* About */}
             <div>
-            <label htmlFor="about" className="block text-gray-700 font-semibold mb-2">
+            <label htmlFor="about" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
               About
             </label>
             <RichTextEditorComponent
@@ -199,7 +197,7 @@ const EditProfile = () => {
 
             {/* Bio */}
             <div>
-              <label htmlFor="bio" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="bio" className="block text-gray-700 font-semibold mb-2 dark:text-gray-100">
                 Bio
               </label>
               <RichTextEditorComponent

@@ -13,7 +13,7 @@ const Home = () => {
                 Transform Your Career Path
               </h1>
               <p className="mb-12 text-center text-xl text-gray-700 lg:text-left dark:text-gray-300">
-                Experience how Unitern connects ambitious students with leading companies, paving the way for rewarding internships.
+                Experience how Unintern connects ambitious students with leading companies, paving the way for rewarding internships.
               </p>
               <div className="mb-12 flex items-center justify-center lg:items-start lg:justify-start">
                 <a href="/jobs" className="items-center rounded-lg bg-blue-400 px-6 py-3 text-lg font-semibold text-white hover:bg-blue-500">
@@ -32,12 +32,12 @@ const Home = () => {
           <div className="flex flex-col items-stretch lg:flex-row">
             <div className="relative flex-1 p-10 lg:w-1/2">
               <div className="absolute bottom-0 right-0 z-0 h-4/5 w-4/5 bg-gray-200 dark:bg-gray-700"></div>
-              <img className="relative bottom-10 right-10 z-[1] aspect-square object-cover lg:absolute xl:relative xl:bottom-0 xl:right-0" src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/1b046585-8bed-446c-80e1-bee8271c9000/public" alt="Discover Unitern" />
+              <img className="relative bottom-10 right-10 z-[1] aspect-square object-cover lg:absolute xl:relative xl:bottom-0 xl:right-0" src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/1b046585-8bed-446c-80e1-bee8271c9000/public" alt="Discover Unintern" />
             </div>
             <div className="px-14 pt-10 lg:w-1/2">
-              <h3 className="pb-4 text-base font-medium uppercase tracking-widest text-blue-500 dark:text-blue-400">Discover Unitern</h3>
+              <h3 className="pb-4 text-base font-medium uppercase tracking-widest text-blue-500 dark:text-blue-400">Discover Unintern</h3>
               <h1 className="mb-6 border-b-8 border-blue-500 text-3xl font-semibold text-gray-800 lg:text-5xl dark:text-white">Empowering Your Internship Journey</h1>
-              <p className="mb-8 text-base font-normal tracking-wide text-gray-600 dark:text-gray-300">Unitern is designed to seamlessly connect students with valuable internship opportunities, ensuring a straightforward and effective recruitment experience. Our platform fosters meaningful connections between aspiring professionals and forward-thinking companies, all within a sleek, user-friendly interface that prioritizes your needs.</p>
+              <p className="mb-8 text-base font-normal tracking-wide text-gray-600 dark:text-gray-300">Unintern is designed to seamlessly connect students with valuable internship opportunities, ensuring a straightforward and effective recruitment experience. Our platform fosters meaningful connections between aspiring professionals and forward-thinking companies, all within a sleek, user-friendly interface that prioritizes your needs.</p>
               <div className="mb-8 flex flex-row space-x-6">
                 <div className="flex flex-1 flex-col">
                   <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-blue-500 text-3xl text-white">
@@ -65,7 +65,7 @@ const Home = () => {
           <div className="text-center text-white">
             <h3 className="pb-4 text-base font-medium uppercase tracking-widest text-blue-500">Explore Internship Opportunities</h3>
             <h2 className="mx-auto mb-6 text-center text-3xl font-semibold md:text-4xl">Bridging Students and Companies for a Brighter Future</h2>
-            <p className="mb-8 text-center text-xl">Unitern revolutionizes the internship search process, making it effortless for students to find meaningful work experiences. Our platform is designed for clarity and excellence, enabling users to connect with potential employers and explore opportunities that enhance their careers.</p>
+            <p className="mb-8 text-center text-xl">Unintern revolutionizes the internship search process, making it effortless for students to find meaningful work experiences. Our platform is designed for clarity and excellence, enabling users to connect with potential employers and explore opportunities that enhance their careers.</p>
           </div>
           <div className="flex flex-wrap px-4 lg:mt-28 lg:grid lg:flex-none lg:grid-cols-3 lg:place-items-center lg:items-stretch lg:justify-center lg:gap-x-6 lg:gap-y-6">
             <div className="w-full p-6 md:w-1/2 lg:w-auto lg:p-0">
@@ -127,9 +127,9 @@ const Home = () => {
       </section>
       <section className="bg-[var(--light-background-color)] code-section dark:bg-gray-900">
         <div className="container relative z-10 mx-auto py-24 xl:px-12 2xl:px-36">
-          <h3 className="pb-4 text-center text-lg font-medium uppercase tracking-widest text-blue-500 dark:text-blue-400">Unitern Gallery</h3>
+          <h3 className="pb-4 text-center text-lg font-medium uppercase tracking-widest text-blue-500 dark:text-blue-400">Unintern Gallery</h3>
           <h2 className="mx-auto mb-6 text-center text-4xl font-bold border-b-4 border-blue-500 dark:border-blue-400">Visualizing Your Opportunities</h2>
-          <p className="mb-8 text-base font-normal tracking-wide text-gray-600 dark:text-gray-300">Explore the dynamic experiences awaiting you through Unitern. Each image in this gallery illustrates the exciting world of internships and training opportunities that connect students like you with leading companies. Discover how these environments foster professional growth as you embark on your career journey.</p>
+          <p className="mb-8 text-base font-normal tracking-wide text-gray-600 dark:text-gray-300">Explore the dynamic experiences awaiting you through Unintern. Each image in this gallery illustrates the exciting world of internships and training opportunities that connect students like you with leading companies. Discover how these environments foster professional growth as you embark on your career journey.</p>
           <div className="grid grid-cols-2 gap-x-6 gap-y-6 lg:grid-cols-3">
             <img className="aspect-square object-cover transition-transform duration-300 ease-in-out hover:scale-105" src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/08466cc0-75b8-4a76-8e26-11f9358f3b00/public" alt="Gallery" />
             <img className="aspect-square object-cover transition-transform duration-300 ease-in-out hover:scale-105" src="https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/d511f69a-c9ac-4119-853e-3cb57ac51300/public" alt="Gallery" />
@@ -143,7 +143,7 @@ const Home = () => {
       <section className="code-section">
         <div className="container relative z-10 mx-auto px-4 py-24 xl:px-12 2xl:px-36">
           <h3 className="pb-4 text-center text-base font-medium uppercase tracking-widest text-[var(--primary-color)]">What Our Users Say</h3>
-          <h2 className="md:text-4x mx-auto mb-12 text-center text-4xl font-bold"><span className="border-b-4 border-[var(--primary-color)] [font-family:var(--font-family-heading)]">Real Experiences with Unitern</span></h2>
+          <h2 className="md:text-4x mx-auto mb-12 text-center text-4xl font-bold"><span className="border-b-4 border-[var(--primary-color)] [font-family:var(--font-family-heading)]">Real Experiences with Unintern</span></h2>
           <div className="flex flex-col items-center justify-center space-y-12 lg:flex-row lg:space-x-6 lg:space-y-0">
             <div className="max-w-96 relative flex flex-col items-center justify-center rounded-md bg-[#ffffff] py-12 shadow-[0_0_6px_1px_rgba(0,0,0,0.1)] lg:w-96">
               <div className="absolute right-4 top-2"><FaQuoteLeft className="text-3xl text-[var(--primary-color)]" aria-hidden="true" /></div>
@@ -155,7 +155,7 @@ const Home = () => {
                 <FaStar className="fa-xs text-yellow-500" aria-hidden="true" />
                 <FaStar className="fa-xs text-yellow-500" aria-hidden="true" />
               </div>
-              <div className="mb-4 px-10 text-center font-thin tracking-wide text-[var(--dark-text-color)]">Unitern transformed my internship search! The platform is intuitive and user-friendly, allowing me to find tailored opportunities that match my career goals effortlessly.</div>
+              <div className="mb-4 px-10 text-center font-thin tracking-wide text-[var(--dark-text-color)]">Unintern transformed my internship search! The platform is intuitive and user-friendly, allowing me to find tailored opportunities that match my career goals effortlessly.</div>
               <div className="font-medium uppercase tracking-wide">Sophia Turner</div>
               <div className="font-medium tracking-wide text-[var(--primary-color)]">Aspiring Marketing Specialist</div>
             </div>
@@ -183,7 +183,7 @@ const Home = () => {
                 <FaStar className="fa-xs text-yellow-500" aria-hidden="true" />
                 <FaStar className="fa-xs text-yellow-500" aria-hidden="true" />
               </div>
-              <div className="mb-4 px-10 text-center font-thin tracking-wide text-[var(--dark-text-color)]">Unitern is a game-changer for students! The resources and support available are invaluable, truly guiding me toward my career aspirations.</div>
+              <div className="mb-4 px-10 text-center font-thin tracking-wide text-[var(--dark-text-color)]">Unintern is a game-changer for students! The resources and support available are invaluable, truly guiding me toward my career aspirations.</div>
               <div className="font-medium uppercase tracking-wide">Isabella Green</div>
               <div className="font-medium tracking-wide text-[var(--primary-color)]">Computer Science Student</div>
             </div>
@@ -194,7 +194,7 @@ const Home = () => {
         <div className="absolute inset-0 h-[30rem] w-full bg-cover bg-center object-cover brightness-[.25] bg-[url('https://imagedelivery.net/xaKlCos5cTg_1RWzIu_h-A/be2e8651-afca-4c6d-37e6-dbc42dab3700/publicContain')]" data-landingsite-gallery-type="image"></div>
         <div className="container relative z-10 mx-auto px-6 py-24 xl:px-12 2xl:px-36">
           <div className="text-center text-white">
-            <h3 className="pb-4 text-base font-medium uppercase tracking-widest text-[var(--primary-color)]">Reach Out to Unitern</h3>
+            <h3 className="pb-4 text-base font-medium uppercase tracking-widest text-[var(--primary-color)]">Reach Out to Unintern</h3>
             <h2 className="mx-auto mb-6 text-center text-3xl font-semibold md:text-4xl"><span className="border-b-4 border-[var(--primary-color)] [font-family:var(--font-family-heading)]">Connect with Us Today</span></h2>
             <p className="mb-8 text-center text-xl font-thin">Have questions about our internship platform or need assistance with your journey? Our dedicated team is here to provide you with the support you need to make the most of your opportunities.</p>
           </div>
@@ -210,7 +210,7 @@ const Home = () => {
                 </div>
                 <div className="mb-2 font-light tracking-wider sm:text-lg">
                   <FaEnvelope className="mr-2" aria-hidden="true" />
-                <span>support@unitern.com</span>
+                <span>support@unintern.com</span>
                 </div>
                 <div className="mb-2 font-light tracking-wider sm:text-lg">
                   <FaLocationArrow className="mr-2" aria-hidden="true" />

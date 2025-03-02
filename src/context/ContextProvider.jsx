@@ -1,18 +1,15 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  // State declarations
   const [searchOpen, setSearchOpen] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [currentMode, setCurrentMode] = useState(
-    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  );
   const [isClicked, setIsClicked] = useState(false);
   const [isReport, setIsReport] = useState(false);
-  const [iconTheme, setIconTheme] = useState(currentMode === 'dark');
   const [jobs, setJobs] = useState([]);
   const [Companies, setCompanies] = useState([]); // State for companies
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,10 +29,44 @@ export const ContextProvider = ({ children }) => {
   const [showFilters, setShowFilters] = useState(false);
   const [activeTab, setActiveTab] = useState("for-you"); // Track active tab
 
+  // Dark mode state and toggle
+  const [currentMode, setCurrentMode] = useState(
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  );
+  const [iconTheme, setIconTheme] = useState(currentMode === 'dark');
+  const gridRef = useRef(null);
+
   const toggleMode = () => {
     setCurrentMode((prevMode) => (prevMode === 'dark' ? 'light' : 'dark'));
     setIconTheme((prevTheme) => !prevTheme);
   };
+
+  // Dark mode effect
+  useEffect(() => {
+    // Toggle the 'dark' class on the <html> element
+    document.documentElement.classList.toggle('dark', currentMode === 'dark');
+
+    // Enable/disable Syncfusion dark theme CSS
+    const syncfusionDarkTheme = document.getElementById('material3-dark');
+    const syncfusionLightTheme = document.getElementById('material3');
+
+    if (syncfusionDarkTheme && syncfusionLightTheme) {
+      if (currentMode === 'dark') {
+        syncfusionDarkTheme.disabled = false; // Enable dark theme
+        syncfusionLightTheme.disabled = true; // Disable light theme
+      } else {
+        syncfusionDarkTheme.disabled = true; // Disable dark theme
+        syncfusionLightTheme.disabled = false; // Enable light theme
+      }
+    } else {
+      console.error('Syncfusion theme <link> tags not found in the DOM.');
+    }
+
+    // Refresh the grid to apply the new theme
+    if (gridRef.current) {
+      gridRef.current.refresh();
+    }
+  }, [currentMode]);
 
   // Fetch jobs function
   const fetchJobs = async (page) => {
@@ -78,10 +109,7 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark', currentMode === 'dark');
-  }, [currentMode]);
-
+  // Simulate loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -185,10 +213,11 @@ export const ContextProvider = ({ children }) => {
         setLocationOpener,
         experienceOpener,
         setExperienceOpener,
-        showFilters, 
+        showFilters,
         setShowFilters,
         fetchJobs,
         fetchCompanies, // Add fetchCompanies to context
+        gridRef, // Add gridRef to context
       }}
     >
       {children}

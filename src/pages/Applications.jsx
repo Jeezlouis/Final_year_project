@@ -182,7 +182,7 @@ const Applications = () => {
   const actionTemplate = (props) => <ThreeDotDropdown rowData={props} />;
 
   return (
-    <div className="min-h-screen flex bg-gray-100">
+    <div className="min-h-screen flex bg-main-bg dark:bg-main-dark-bg">
       {/* Main Content */}
       <div className="flex-1">
         <main className="container mx-auto p-6 space-y-8">

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import profile from '../assets/companylogo.svg'
 import { FaStar } from "react-icons/fa";
 
 const CompanyDetails = ({ company }) => {
   const {
+    logo = profile,
     name = "IBM (International Business Machines Corporation)",
     title = "A global leader in technology, consulting, and research",
     founded = "1911",
@@ -79,13 +81,16 @@ const CompanyDetails = ({ company }) => {
   };
 
   return (
-    <div className="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+    <div className="p-6 bg-white dark:bg-secondary-dark-bg rounded-lg shadow-lg">
       {/* Company Name and Title */}
+      <div className="flex items-center space-x-4">
+        <img src={logo} alt="Company Logo" className="w-14 h-14 rounded-lg shadow" />
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200">
           {name}
         </h1>
         <p className="text-gray-600 dark:text-gray-400">{title}</p>
+      </div>
       </div>
 
       {/* About Section */}
@@ -226,7 +231,7 @@ const CompanyDetails = ({ company }) => {
             <textarea
               value={newReview.comment}
               onChange={handleCommentChange}
-              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-200"
+              className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-transparent dark:text-gray-200"
               rows="4"
               placeholder="Share your experience..."
               required

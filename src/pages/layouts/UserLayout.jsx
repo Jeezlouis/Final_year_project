@@ -10,13 +10,13 @@ const UserLayout = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100 flex-col relative">
+    <div className="flex min-h-screen bg-gray-100 dark:bg-main-dark-bg flex-col relative">
       {/* Header occupies the top with fixed styling */}
       <Header toggleSidebar={toggleSidebar} fixedHeader={true} />
 
       {/* Sidebar as fixed element overlapping footer */}
       <aside 
-        className={`fixed sidebar isolate top-16 left-0 h-full w-64 bg-white shadow-lg z-50 transition-transform duration-300 ease-in-out ${
+        className={`fixed sidebar isolate top-16 left-0 h-full w-64 bg-white dark:bg-main-dark-bg shadow-lg z-50 transition-transform duration-300 ease-in-out ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         } md:translate-x-0`}
       >
@@ -32,8 +32,10 @@ const UserLayout = () => {
       </div>
 
       {/* Footer */}
-      <footer className="border-t-2 border-gray-300 py-4 text-center text-sm text-gray-600">
-        <Copyright />
+      <footer className="border-t-2 border-[#33373E] py-4 dark:bg-main-dark-bg dark:text-gray-50 text-center text-sm text-gray-600">
+        <Copyright
+        company="Unintern"
+        />
       </footer>
     </div>
   );

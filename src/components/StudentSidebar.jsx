@@ -6,7 +6,7 @@ const normalLink = 'flex items-center capitlize gap-5 pl-4 pt-3 pb-2.5 rounded-l
 
 const links = [
   {
-    path: 'user/student-dashboard',
+    path: 'user/dashboard',
     name: 'Dashboard',
   },
   {
@@ -26,6 +26,10 @@ const links = [
     name: 'My profile',
   },
   {
+    path: 'user/messages',
+    name: 'Messages',
+  },
+  {
     path: 'user/notifications',
     name: 'Notifications',
   },
@@ -37,7 +41,7 @@ const links = [
 
 const StudentSidebar = () => {
   return (
-    <nav className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
+    <nav className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10 dark:bg-secondary-dark-bg">
       {links.map((item, index) => (
         <NavLink
           key={index}

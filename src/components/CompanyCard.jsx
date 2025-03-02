@@ -14,7 +14,7 @@ const CompanyCard = ({ id, name, industry, location, size, revenue, rating, foun
   };
 
   return (
-    <div className="border border-gray-300 dark:border-gray-700 rounded-xl p-6 shadow-md bg-white dark:bg-gray-800 transition hover:shadow-lg">
+    <div className="border border-gray-300 dark:border-[#20232A] rounded-xl p-6 shadow-md bg-white dark:bg-secondary-dark-bg transition hover:shadow-lg">
       <div className="flex items-center space-x-4">
         <img src={logo} alt="Company Logo" className="w-16 h-16 rounded-lg object-cover" />
         <div className="flex-1">

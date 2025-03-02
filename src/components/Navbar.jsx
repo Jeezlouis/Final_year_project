@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { IoMdSearch } from 'react-icons/io';
 import { FaBars } from 'react-icons/fa';
 import { MdOutlineCancel } from 'react-icons/md';
@@ -36,49 +36,37 @@ const  Navbar = () => {
     <nav className={`flex items-center justify-between px-6 py-4 bg-gray-200 drop-shadow-xl ${sidebarOpen ? 'bg-gray-200' : ''} ${currentMode === 'dark' ? 'bg-main-dark-bg text-white' : 'bg-white text-black'}`}>
       {/* Logo Section */}
       <div className="flex items-center">
-        <Link to="/">
-          <span className='text-3xl text-blue-600 dark:text-blue-400'>Unitern</span>
-        </Link>
+        <NavLink to="/" className={({isActive}) => isActive ? 'text-3xl text-blue-600 dark:text-blue-400' : 'text-3xl text-blue-600 dark:text-blue-400'}>
+          Unintern
+        </NavLink>
       </div>
 
       {/* Navigation Links */}
       <div className="hidden md:flex items-center space-x-4">
-        <Link
+        <NavLink
           to="/"
-          className="hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 
-            dark:text-white text-gray-800"
+          className={({ isActive }) => `transition duration-300 ${isActive ? 'text-blue-500' : 'dark:text-white text-gray-800'}`}
         >
           Home
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/jobs"
-          className="hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 
-            dark:text-white text-gray-800"
+          className={({ isActive }) => `transition duration-300 ${isActive ? 'text-blue-500' : 'dark:text-white text-gray-800'}`}
         >
           Internships
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/companies"
-            className="hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 
-            dark:text-white text-gray-800"
+          className={({ isActive }) => `transition duration-300 ${isActive ? 'text-blue-500' : 'dark:text-white text-gray-800'}`}
         >
           Companies
-        </Link>
-        <Link
-          to="/blog"
-          className={`hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 ${
-        currentMode === 'dark' ? 'text-white' : 'text-gray-800'
-      }`}
-        >
-          Blog
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/contact"
-          className="hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 
-            dark:text-white text-gray-800"
+          className={({ isActive }) => `transition duration-300 ${isActive ? 'text-blue-500' : 'dark:text-white text-gray-800'}`}
         >
           Contact
-        </Link>
+        </NavLink>
       </div>
 
       {/* Search Bar */}
@@ -97,18 +85,18 @@ const  Navbar = () => {
 
       {/* Action Buttons */}
       <div className="hidden md:flex items-center space-x-4">
-        <Link
+        <NavLink
           to="/login"
-          className="text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
+          className="hover:text-blue-500 dark:hover:text-blue-400 transition duration-300 dark:text-white text-gray-800"
         >
           Sign In
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/sign-up"
           className="text-white bg-blue-500 hover:bg-blue-400 dark:bg-blue-600 dark:hover:bg-blue-500 px-4 py-2 rounded-lg transition duration-300"
         >
           Sign Up
-        </Link>
+        </NavLink>
       </div>
 
       {/* Mobile Menu */}
@@ -120,18 +108,18 @@ const  Navbar = () => {
         >
           <IoMdSearch />
         </button>
-        <Link
+        <NavLink
           to="/login"
           className="text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 transition duration-300"
         >
           Sign In
-        </Link>
-        <Link
+        </NavLink>
+        <NavLink
           to="/sign-up"
           className="text-white bg-blue-500 hover:bg-blue-400 dark:bg-blue-600 dark:hover:bg-blue-500 px-4 py-2 rounded-lg transition duration-300"
         >
           Sign Up
-        </Link>
+        </NavLink>
         <button
           type="button"
           className="text-gray-800 dark:text-white hover:text-blue-500 dark:hover:text-blue-400 focus:outline-none"

@@ -2,6 +2,11 @@
 @import url('https://cdn.syncfusion.com/ej2-base/styles/material.css');
 @import url('https://cdn.syncfusion.com/ej2-base/styles/material.css');
 @import url('https://cdn.syncfusion.com/ej2-react-lists/styles/material.css');
+@import url('https://cdn.syncfusion.com/ej2-react-circulargauge/styles/material.css');
+@import url('https://cdn.syncfusion.com/ej2-react-charts/styles/material.css');
+
+
+
 :root {
   --light-background-color: #f0f4f8;
   --dark-text-color: #333;
@@ -12,6 +17,25 @@
   --primary-color: #007bff;
   --button-padding-x: 1rem;
   --button-padding-y: 0.5rem;
+}
+.dark .e-grid {
+  --color-sf-primary: rgba(99, 102, 241);
+  --color-sf-primary-text-color: #fff;
+  --color-sf-primary-lighter: #1e1b4b;
+  --color-sf-primary-dark: #818cf8;
+  --color-sf-primary-darker: #4f46e5;
+  --color-sf-success: #22c55e;
+  --color-sf-info: #38bdf8;
+  --color-sf-warning: #f97316;
+  --color-sf-danger: #f87171;
+  --color-sf-success-light: #164c37;
+  --color-sf-info-light: #0e485b;
+  --color-sf-warning-light: #573422;
+  --color-sf-danger-light: #54252f;
+  --color-sf-success-dark: #4ade80;
+  --color-sf-info-dark: #38bdf8;
+  --color-sf-warning-dark: #fb923c;
+  --color-sf-danger-dark: #ef4444;
 }
 html.dark {
     --bg-color: #20232A;
@@ -80,8 +104,16 @@ select:focus {
   border-radius: 6px;
 }
 option {
+  appearance: none;
   background-color: white;
   color: #333;
+  padding: 10px;
+  border-radius: 6px;
+}
+option.dark {
+  background-color: #000;
+  background-color: #53565c;
+  color: #fff;
   padding: 10px;
   border-radius: 6px;
 }
@@ -310,5 +342,20 @@ html.dark .description-content::after {
   background-color: #ddcece;
   color: #ce3131;
   text-transform: capitalize;
+}
+/* Custom CSS for dark mode grid */
+.dark-grid .e-headertext,
+.dark-grid .e-rowcell {
+  color: #e5e7eb; /* Light text color for dark mode */
+}
+
+.dark-grid .e-gridheader,
+.dark-grid .e-row {
+  background-color: #1f2937; /* Dark background for headers and rows */
+}
+
+.dark-grid .e-pager,
+.dark-grid .e-toolbar {
+  background-color: #1f2937; /* Dark background for pager and toolbar */
 }
 

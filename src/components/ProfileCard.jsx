@@ -14,7 +14,7 @@ const ProfileCard = () => {
   };
 
   return (
-    <div className="max-w-sm bg-white shadow-lg rounded-lg p-6">
+    <div className="max-w-sm bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6">
       <div className="flex items-center space-x-4">
         <img
           src={user.image}
@@ -22,19 +22,19 @@ const ProfileCard = () => {
           className="w-16 h-16 rounded-full border-2 border-blue-500"
         />
         <div>
-          <h2 className="text-2xl font-bold text-gray-800">{user.name}</h2>
-          <p className="text-gray-600">{user.email}</p>
-          <p className="text-gray-500 text-sm">{user.role}</p>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-gray-200">{user.name}</h2>
+          <p className="text-gray-600 dark:text-gray-300">{user.email}</p>
+          <p className="text-gray-500 dark:text-gray-400 text-sm">{user.role}</p>
         </div>
       </div>
       <div className="mt-6 flex justify-around border-t pt-6">
         <div className="text-center">
           <p className="text-2xl font-bold text-blue-600">{user.stats.applications}</p>
-          <p className="text-gray-600 text-sm">Applications</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">Applications</p>
         </div>
         <div className="text-center">
           <p className="text-2xl font-bold text-blue-600">{user.stats.saved}</p>
-          <p className="text-gray-600 text-sm">Saved Internships</p>
+          <p className="text-gray-600 dark:text-gray-300 text-sm">Saved Internships</p>
         </div>
       </div>
       <div className="mt-6 flex space-x-4">

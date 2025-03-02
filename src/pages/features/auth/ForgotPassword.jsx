@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ForgotPassword = () => {
   return (
-    <div className="bg-beautify flex items-center justify-center min-h-screen">
+    <div className="bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center min-h-screen p-6">
       <div className="bg-white shadow-xl rounded-lg w-full max-w-lg p-6 md:p-10">
         <h1 className="text-3xl font-semibold text-gray-800 text-center mb-6">Forgot Password</h1>
         <p className="text-gray-600 text-center mb-6">

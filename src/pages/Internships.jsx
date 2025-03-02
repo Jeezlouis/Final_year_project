@@ -156,7 +156,7 @@ const Internships = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen dark:bg-gray-900 relative">
+    <div className="p-6 bg-gray-50 main-bg dark:bg-main-dark-bg min-h-screen relative dark:text-white">
       {/* Search Bar Section with extra padding */}
       <div className="mb-8">
         <Searchbar
@@ -173,13 +173,13 @@ const Internships = () => {
       <div className="flex">
         {/* Filters Section */}
         <div className="w-1/4 pr-6">
-          <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+          <div className="bg-gray-100 dark:bg-secondary-dark-bg p-4 rounded-lg">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-6">Filters</h2>
 
             {/* Job Type */}
             <div className="mb-6">
               <label className="block text-gray-800 dark:text-gray-200 mb-2">Job Type</label>
-              <select name="jobType" value={filters.jobType} onChange={handleFilterChange} className="w-full p-2 border rounded-full">
+              <select name="jobType" value={filters.jobType} onChange={handleFilterChange} className="w-full p-2 border dark:bg-transparent dark:text-white rounded-full">
                 <option value="">All Types</option>
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -191,25 +191,25 @@ const Internships = () => {
             {/* Industry */}
             <div className="mb-6">
               <label className="block text-gray-800 dark:text-gray-200 mb-2">Industry</label>
-              <input type="text" name="industry" value={filters.industry} onChange={handleFilterChange} className="w-full p-2 border rounded-full" />
+              <input type="text" name="industry" value={filters.industry} onChange={handleFilterChange} className="w-full p-2 border dark:bg-transparent dark:text-white rounded-full" />
             </div>
 
             {/* Location */}
             <div className="mb-6">
               <label className="block text-gray-800 dark:text-gray-200 mb-2">Location</label>
-              <input type="text" name="location" value={filters.location} onChange={handleFilterChange} className="w-full p-2 border rounded-full" />
+              <input type="text" name="location" value={filters.location} onChange={handleFilterChange} className="w-full p-2 border dark:bg-transparent dark:text-white rounded-full" />
             </div>
 
             {/* Salary Range */}
             <div className="mb-6">
               <label className="block text-gray-800 dark:text-gray-200 mb-2">Salary Range</label>
-              <input type="text" name="salary" value={filters.salary} onChange={handleFilterChange} className="w-full p-2 border rounded-full" />
+              <input type="text" name="salary" value={filters.salary} onChange={handleFilterChange} className="w-full p-2 border dark:bg-transparent dark:text-white rounded-full" />
             </div>
 
             {/* Skills */}
             <div className="mb-6">
               <label className="block text-gray-800 dark:text-gray-200 mb-2">Required Skills</label>
-              <input type="text" name="skills" value={filters.skills} onChange={handleFilterChange} className="w-full p-2 border rounded-full" />
+              <input type="text" name="skills" value={filters.skills} onChange={handleFilterChange} className="w-full p-2 border dark:bg-transparent dark:text-white rounded-full" />
             </div>
 
             {/* Clear Filters */}
@@ -220,7 +220,7 @@ const Internships = () => {
         </div>
         <div className="w-3/4 overflow-y-auto h-screen px-4">
       {loading ? (
-        <div className="flex justify-center items-center min-h-screen dark:bg-main-dark-bg"><Loader /></div>
+        <div className="flex justify-center items-center min-h-screen dark:bg-secondary-dark-bg"><Loader /></div>
       ) : (
         <>
           <div className="grid grid-cols-1 gap-6">
@@ -266,7 +266,7 @@ const Internships = () => {
       >
         {selectedJob && (
           <div
-            className={`bg-white dark:bg-gray-800 shadow-xl w-full max-w-2xl h-full overflow-y-auto p-6 transform transition-transform duration-300 ${
+            className={`bg-white dark:bg-secondary-dark-bg shadow-xl w-full max-w-2xl h-full overflow-y-auto p-6 transform transition-transform duration-300 ${
               showDetails ? "translate-x-0" : "translate-x-full"
             }`}
             onClick={(e) => e.stopPropagation()}

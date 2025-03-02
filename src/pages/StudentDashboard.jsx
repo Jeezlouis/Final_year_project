@@ -30,11 +30,13 @@ import {
   Edit, 
   Toolbar
 } from "@syncfusion/ej2-react-grids";
+import { useStateContext } from "../context/ContextProvider";
 
 const StudentDashboard = () => {
   const studentName = "John Doe"; // Replace with dynamic data
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredInternships, setFilteredInternships] = useState([]);
+  const { gridRef } = useStateContext()
 
   const applicationTrendsData = [
     { x: "Jan", y: 10 },
@@ -126,39 +128,39 @@ const StudentDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="min-h-screen bg-main-bg dark:bg-main-dark-bg flex">
       {/* Main Content */}
       <div className="flex-1">
         <div className="pb-6">
-          <h2 className="text-2xl font-bold">Dashboard</h2>
+          <h2 className="text-2xl font-bold dark:text-gray-100">Dashboard</h2>
         </div>
 
         {/* Main Content */}
         <main className="container mx-auto p-6 space-y-8">
           {/* Welcome Section */}
-          <section className="bg-white p-6 rounded-lg shadow">
-            <h1 className="text-2xl font-bold mb-4">Welcome back, {studentName}!</h1>
+          <section className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow">
+            <h1 className="text-2xl font-bold mb-4 dark:text-gray-100">Welcome back, {studentName}!</h1>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-              <div className="p-4 bg-blue-50 rounded-lg shadow">
+              <div className="p-4 bg-blue-50 dark:bg-gray-800 rounded-lg shadow">
                 <p className="text-gray-600">Total Applications</p>
                 <p className="text-2xl font-bold">12</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg shadow">
+              <div className="p-4 bg-blue-50 dark:bg-gray-800 rounded-lg shadow">
                 <p className="text-gray-600">Internships Saved</p>
                 <p className="text-2xl font-bold">5</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg shadow">
+              <div className="p-4 bg-blue-50 dark:bg-gray-800 rounded-lg shadow">
                 <p className="text-gray-600">Upcoming Interviews</p>
                 <p className="text-2xl font-bold">2</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg shadow">
+              <div className="p-4 bg-blue-50 dark:bg-gray-800 rounded-lg shadow">
                 <p className="text-gray-600">Unread Messages</p>
                 <p className="text-2xl font-bold">3</p>
               </div>
             </div>
             {/* Application Trends Chart */}
             <div>
-              <h2 className="text-xl font-semibold mb-4">Application Trends</h2>
+              <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Application Trends</h2>
               <ChartComponent
                 id="line-chart"
                 primaryXAxis={{ valueType: "Category" }}
@@ -180,8 +182,8 @@ const StudentDashboard = () => {
 
           {/* Internship Matches & Skill Distribution */}
           <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">Internship Matches by Industry</h2>
+            <div className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Internship Matches by Industry</h2>
               <ChartComponent
                 id="column-chart"
                 primaryXAxis={{ valueType: "Category" }}
@@ -198,8 +200,8 @@ const StudentDashboard = () => {
                 </SeriesCollectionDirective>
               </ChartComponent>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h2 className="text-xl font-semibold mb-4">Skill Distribution</h2>
+            <div className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow">
+              <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Skill Distribution</h2>
               <AccumulationChartComponent
                 id="pie-chart"
                 legendSettings={{ visible: true }}
@@ -219,8 +221,8 @@ const StudentDashboard = () => {
           </section>
 
           {/* Internship Search & Recommendations */}
-          <section className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">Internship Recommendations</h2>
+          <section className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Internship Recommendations</h2>
             <input
               type="text"
               placeholder="Search internships..."
@@ -229,14 +231,15 @@ const StudentDashboard = () => {
               className="w-full p-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <GridComponent
+              ref={gridRef}
               id="recommendations-grid"
               dataSource={searchQuery ? filteredInternships : internships}
               allowPaging={true}
               allowSorting
               toolbar={['Delete']}
-              onSettings={{allowDeleting: true, allowEditing:true}}
+              editSettings={{ allowDeleting: true, allowEditing: true }}
               width='auto'
-              className="e-grid sleek-grid"
+              
             >
               <ColumnsDirective>
                 <ColumnDirective field="title" headerText="Title" width="150" textAlign="Left" />
@@ -252,14 +255,14 @@ const StudentDashboard = () => {
           </section>
 
           {/* Recent Applications */}
-          <section className="bg-white p-6 rounded-lg shadow">
-            <h2 className="text-xl font-semibold mb-4">Recent Applications</h2>
+          <section className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow">
+            <h2 className="text-xl font-semibold mb-4 dark:text-gray-100">Recent Applications</h2>
             <GridComponent
+              ref={gridRef}
               id="applications-grid"
               dataSource={recentApplications}
               allowPaging={true}
               pageSettings={{ pageSize: 5 }}
-              className="e-grid sleek-grid"
             >
               <ColumnsDirective>
                 <ColumnDirective field="title" headerText="Title" width="150" textAlign="Left" />

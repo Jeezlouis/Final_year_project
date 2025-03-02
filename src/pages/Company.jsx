@@ -159,7 +159,7 @@ const Company = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen dark:bg-gray-900 relative">
+    <div className="p-6 bg-main-bg min-h-screen dark:bg-main-dark-bg relative">
       {/* Search Bar */}
       <div className="mb-8">
         <Searchbar
@@ -175,10 +175,10 @@ const Company = () => {
         Find Your Dream Company
       </h1>
 
-      <div className="p-6 bg-gray-50 min-h-screen dark:bg-gray-900 relative flex">
+      <div className="p-6 bg-main-bg min-h-screen dark:bg-main-dark-bg relative flex">
         {/* Sticky Filters Section */}
         <div className="w-1/4 pr-6">
-          <div className="sticky top-6 bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+          <div className="sticky top-6 bg-light-gray dark:bg-secondary-dark-bg p-4 rounded-lg">
             <h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
               Filters
             </h2>
@@ -192,7 +192,7 @@ const Company = () => {
                 name="size"
                 value={filters.size}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg bg-white dark:bg-secondary-dark-bg dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Any size</option>
                 <option value="1-50">1 - 50</option>
@@ -216,7 +216,7 @@ const Company = () => {
                 value={filters.industry}
                 onChange={handleFilterChange}
                 placeholder="E.g. healthcare, internet, education"
-                className="w-full p-2 border rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg bg-white dark:bg-secondary-dark-bg dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -231,7 +231,7 @@ const Company = () => {
                 value={filters.location}
                 onChange={handleFilterChange}
                 placeholder="Select a location"
-                className="w-full p-2 border rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg bg-white dark:bg-secondary-dark-bg dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -244,7 +244,7 @@ const Company = () => {
                 name="type"
                 value={filters.type}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg bg-white dark:bg-secondary-dark-bg dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">All Types</option>
                 <option value="public">Public</option>
@@ -263,7 +263,7 @@ const Company = () => {
                 name="revenue"
                 value={filters.revenue}
                 onChange={handleFilterChange}
-                className="w-full p-2 border rounded-lg bg-white dark:bg-gray-700 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full p-2 border rounded-lg bg-white dark:bg-secondary-dark-bg dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">All Revenue</option>
                 <option value="1M-10M">$1M - $10M</option>
@@ -355,15 +355,15 @@ const Company = () => {
       {/* Company Details Modal */}
       {selectedCompany && (
         <div
-          className={`fixed inset-0 bg-black bg-opacity-50 flex justify-end transition-opacity duration-300 z-50 ${
+          className={`fixed inset-0 bg-half-transparent flex justify-end transition-opacity duration-300 z-50 ${
             showDetails ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
           onClick={closeCompanyDetails}
         >
           <div
-            className={`bg-white dark:bg-gray-800 shadow-xl w-full max-w-2xl h-full overflow-y-auto p-6 transform transition-transform duration-300 ${
+            className={`w-full max-w-2xl h-full overflow-y-auto p-6 transform transition-transform duration-300 ${
               showDetails ? "translate-x-0" : "translate-x-full"
-            }`}
+            } bg-main-bg dark:bg-main-dark-bg`}
             onClick={(e) => e.stopPropagation()}
           >
             <button

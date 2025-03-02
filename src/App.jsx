@@ -5,10 +5,29 @@ import './Styles/App.css';
 import {
   Home, Applications, Contact, Companies, Company, CompanyDashboard, EmployerProfile, EditProfile, Internships,
   NotFound, Notifications, PostJob, UserProfile, ForgotPassword, SignUp, StudentDashboard, Login,
-  JobDetail, JobList, AdminLayout, UserLayout, Terms
+  JobList, AdminLayout, UserLayout, Terms,
+  Interns,
+  Analytics_and_Reports,
+  Interviews,
+  Manage_company,
+  Messages,
+  Shortlisted_candidates,
+  CompanyNotifications
 } from './pages';
 import { Navbar } from './components';
 import { useStateContext } from './context/ContextProvider';
+import '@syncfusion/ej2-base/styles/material.css';
+import '@syncfusion/ej2-buttons/styles/material.css';
+import '@syncfusion/ej2-calendars/styles/material.css';
+import '@syncfusion/ej2-dropdowns/styles/material.css';
+import '@syncfusion/ej2-inputs/styles/material.css';
+import '@syncfusion/ej2-lists/styles/material.css';
+import '@syncfusion/ej2-navigations/styles/material.css';
+import '@syncfusion/ej2-popups/styles/material.css';
+import '@syncfusion/ej2-splitbuttons/styles/material.css';
+import '@syncfusion/ej2-react-grids/styles/material.css';
+import '@syncfusion/ej2-react-schedule/styles/material.css';
+import '@syncfusion/ej2-react-richtexteditor/styles/material.css';
 
 const AdminRoutes = () => (
   <AdminLayout>
@@ -59,26 +78,33 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/sign-up" element={<SignUp />} />
             <Route path="/jobs" element={<JobList />} />
-            <Route path="/jobs/:id" element={<JobDetail />} />
             <Route path="/terms" element={<Terms />} />
 
             {/* User Routes */}
             <Route path="/user" element={<UserRoutes />}>
               <Route path="profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><UserProfile /></ProtectedRoute>} />
               <Route path="applications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Applications /></ProtectedRoute>} />
-              <Route path="student-dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><StudentDashboard /></ProtectedRoute>} />
+              <Route path="dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><StudentDashboard /></ProtectedRoute>} />
               <Route path="edit-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditProfile /></ProtectedRoute>} />
               <Route path="companies" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Company /></ProtectedRoute>} />
               <Route path="internships" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Internships /></ProtectedRoute>} />
               <Route path="notifications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Notifications /></ProtectedRoute>} />
+              <Route path="messages" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Messages /></ProtectedRoute>} />
             </Route>
 
             {/* Admin Routes */}
             <Route path="/admin" element={<AdminRoutes />}>
-              <Route path="company-dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CompanyDashboard /></ProtectedRoute>} />
+              <Route path="dashboard" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CompanyDashboard /></ProtectedRoute>} />
               <Route path="post-job" element={<ProtectedRoute isAuthenticated={isAuthenticated}><PostJob /></ProtectedRoute>} />
-              <Route path="employer-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EmployerProfile /></ProtectedRoute>} />
+              <Route path="company-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EmployerProfile /></ProtectedRoute>} />
               <Route path="edit-profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><EditProfile /></ProtectedRoute>} />
+              <Route path="interns" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Interns /></ProtectedRoute>} />
+              <Route path="analytics-and-reports" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Analytics_and_Reports /></ProtectedRoute>} />
+              <Route path="interviews" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Interviews /></ProtectedRoute>} />
+              <Route path="manage-company" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Manage_company /></ProtectedRoute>} />
+              <Route path="messages" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Messages /></ProtectedRoute>} />
+              <Route path="shortlisted-candidates" element={<ProtectedRoute isAuthenticated={isAuthenticated}><Shortlisted_candidates /></ProtectedRoute>} />
+              <Route path="notifications" element={<ProtectedRoute isAuthenticated={isAuthenticated}><CompanyNotifications /></ProtectedRoute>} />
             </Route>
 
             {/* Catch-All Route */}

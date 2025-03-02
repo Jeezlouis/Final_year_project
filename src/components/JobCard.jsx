@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
 import { useStateContext } from '../context/ContextProvider';
+import profile from '../assets/companylogo.svg'
 
 const JobCard = ({ logo, id, title, companyName, location, duration, qualifications, type, skills, compensation, days }) => {
   const { savedJobs, setSavedJobs } = useStateContext(); // Access savedJobs and setSavedJobs from context
@@ -14,12 +15,12 @@ const JobCard = ({ logo, id, title, companyName, location, duration, qualificati
   };
 
   return (
-    <div className='pb-2 rounded-xl border-b-2 hover:bg-gray-200 dark:hover:bg-gray-700 focus:border-gray-500 border-gray-300 dark:border-gray-700 mb-2'>
+    <div className='pb-2 rounded-xl border-b-2 hover:bg-gray-200 dark:hover:bg-transparent focus:border-gray-500 border-gray-300 dark:border-gray-700 mb-2'>
       <div className='flex flex-col w-full  rounded-2xl p-4 dark:bg-secondary-dark-bg'>
         {/* Top Section: Logo, Title, Company Name, Location, and Bookmark Button */}
         <div className='flex justify-between items-start pb-4'>
           <div className='flex items-center'>
-            <img src={logo} alt='company logo' className='w-6 h-6 rounded-lg mr-2' />
+            <img src={logo || profile} alt='company logo' className='w-6 h-6 rounded-lg mr-2' />
             <div>
               <h2 className='uppercase font-bold text-gray-800 dark:text-gray-200'>{title}</h2>
               <div className='flex justify-between'>

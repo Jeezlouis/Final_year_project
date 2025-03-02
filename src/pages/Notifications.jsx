@@ -1,23 +1,31 @@
 import React, { useState } from "react";
 import {
-  ToolbarComponent,
-  ItemsDirective,
-  ItemDirective,
-  AccordionComponent,
-  AccordionItemsDirective,
-  AccordionItemDirective,
-} from "@syncfusion/ej2-react-navigations";
-import { ListViewComponent, Virtualization, Inject } from "@syncfusion/ej2-react-lists";
+  GridComponent,
+  ColumnsDirective,
+  ColumnDirective,
+  Inject,
+  Page,
+  Sort,
+  Filter,
+  Group,
+  Toolbar,
+} from "@syncfusion/ej2-react-grids";
+import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import {
+  DialogComponent,
+} from "@syncfusion/ej2-react-popups";
 
 const Notifications = () => {
+  const [selectedNotification, setSelectedNotification] = useState(null);
+  const [showDialog, setShowDialog] = useState(false);
   const initialNotifications = [
     {
       id: 1,
       title: "New Internship Posted",
       message: "XYZ Corp has posted a new internship that matches your profile.",
       date: "2023-10-10",
-      read: false,
+      status: "Unread",
       icon: "📝",
     },
     {
@@ -25,7 +33,7 @@ const Notifications = () => {
       title: "Application Update",
       message: "Your application for ABC Inc. is now under review.",
       date: "2023-10-09",
-      read: true,
+      status: "Read",
       icon: "📩",
     },
     {
@@ -33,103 +41,143 @@ const Notifications = () => {
       title: "Interview Scheduled",
       message: "You have an interview scheduled with DEF Ltd.",
       date: "2023-10-08",
-      read: false,
+      status: "Unread",
       icon: "📅",
     },
   ];
 
-  const [notifications, setNotifications] = useState(initialNotifications);
-  const [filter, setFilter] = useState("all");
-
-  const filteredNotifications =
-    filter === "all"
-      ? notifications
-      : notifications.filter((n) => (filter === "unread" ? !n.read : n.read));
-
-  const markAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
-  };
-
-  const notificationTemplate = (data) => (
-    <div
-      className={`p-4 rounded-lg shadow-sm mb-3 transition duration-300 flex items-start gap-4 ${
-        data.read ? "bg-gray-100" : "bg-white border-l-4 border-blue-500"
-      }`}
-    >
-      <span className="text-2xl">{data.icon}</span>
-      <div className="flex-1">
-        <h4 className="text-lg font-semibold">{data.title}</h4>
-        <p className="text-gray-600">{data.message}</p>
-        <span className="text-xs text-gray-400">{data.date}</span>
-      </div>
-      {!data.read && (
-        <span className="text-sm font-semibold text-blue-600">New</span>
-      )}
-    </div>
-  );
-
-  return (
-    <div className="min-h-screen bg-gray-50 p-6 flex justify-center">
-      <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg p-6">
-        {/* Header Section */}
-        <ToolbarComponent>
-          <ItemsDirective>
-            <ItemDirective
-              template={() => <h2 className="text-2xl font-bold">🔔 Notifications</h2>}
-            />
-            <ItemDirective
-              template={() => (
-                <ButtonComponent
-                  onClick={markAllAsRead}
-                  className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
-                >
-                  Mark All as Read
-                </ButtonComponent>
-              )}
-              align="Right"
-            />
-          </ItemsDirective>
-        </ToolbarComponent>
-
-        {/* Filter Buttons */}
-        <div className="flex space-x-3 mt-6 mb-4">
-          {["all", "unread", "read"].map((type) => (
-            <button
-              key={type}
-              onClick={() => setFilter(type)}
-              className={`px-4 py-2 rounded-md font-medium transition ${
-                filter === type
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-800 hover:bg-gray-300"
-              }`}
-            >
-              {type.charAt(0).toUpperCase() + type.slice(1)}
-            </button>
-          ))}
-        </div>
-
+  const handleNotificationSelect = (args) => {
+      setSelectedNotification(args.data);
+    };
+  
+    // Handle marking a notification as read
+    const handleMarkAsRead = () => {
+      alert(`Notification marked as read: ${selectedNotification.message}`);
+      setSelectedNotification({ ...selectedNotification, status: "Read" });
+    };
+  
+    // Handle deleting a notification
+    const handleDeleteNotification = () => {
+      alert(`Notification deleted: ${selectedNotification.message}`);
+      setSelectedNotification(null);
+    };
+  
+    // Handle taking action (e.g., view application, reply to message)
+    const handleTakeAction = () => {
+      setShowDialog(true);
+    };
+  
+    // Dialog buttons
+    const dialogButtons = [
+      {
+        buttonModel: {
+          content: "Confirm",
+          cssClass: "e-primary",
+        },
+        click: () => {
+          alert(`Action taken for: ${selectedNotification.message}`);
+          setShowDialog(false);
+        },
+      },
+      {
+        buttonModel: {
+          content: "Cancel",
+        },
+        click: () => setShowDialog(false),
+      },
+    ];
+  
+    return (
+      <div className="m-10 bg-main-bg dark:bg-main-dark-bg">
+        <h1 className="text-3xl font-bold mb-6 dark:text-gray-200">Your Notifications</h1>
+  
         {/* Notifications List */}
-        <AccordionComponent>
-          <AccordionItemsDirective>
-            <AccordionItemDirective
-              header="📩 All Notifications"
-              content={() => (
-                <ListViewComponent
-                  id="notifications-list"
-                  dataSource={filteredNotifications}
-                  template={notificationTemplate}
-                  className="e-list-template"
-                  enableVirtualization={true}
-                >
-                    <Inject services={[Virtualization]} />
-                </ListViewComponent>
-              )}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow-md lg:col-span-2">
+            <div className="mb-4">
+              <DropDownListComponent
+                dataSource={["All", "Unread", "Read"]}
+                placeholder="Filter by Status"
+                className="w-full"
+              />
+            </div>
+            <GridComponent
+              dataSource={initialNotifications}
+              allowPaging={true}
+              allowSorting={true}
+              allowFiltering={true}
+              rowSelected={handleNotificationSelect}
+              height="400px"
+            >
+              <ColumnsDirective>
+                <ColumnDirective field="title" headerText="Title" width="150" />
+                <ColumnDirective field="date" headerText="Date" width="150" format="yMd" />
+                <ColumnDirective field="message" headerText="Message" width="300" />
+                <ColumnDirective field="status" headerText="Status" width="100" />
+                <ColumnDirective field="icon" headerText="Icon" width="100" />
+              </ColumnsDirective>
+              <Inject services={[Page, Sort, Filter, Group, Toolbar]} />
+            </GridComponent>
+          </div>
+  
+          {/* Notification Details */}
+          <div className="bg-white dark:bg-secondary-dark-bg p-6 rounded-lg shadow-md lg:col-span-1">
+            {selectedNotification ? (
+              <>
+                <h2 className="text-xl font-semibold mb-4">{selectedNotification.type}</h2>
+                <div className="space-y-4">
+                  <p><strong>Date:</strong> {selectedNotification.date}</p>
+                  <p><strong>Message:</strong> {selectedNotification.message}</p>
+                  <p><strong>Status:</strong> {selectedNotification.status}</p>
+                </div>
+                <div className="mt-6 space-y-4">
+                  <ButtonComponent
+                    cssClass="e-primary w-full"
+                    onClick={handleTakeAction}
+                  >
+                    Take Action
+                  </ButtonComponent>
+                  <ButtonComponent
+                    cssClass="e-outline w-full"
+                    onClick={handleMarkAsRead}
+                  >
+                    Mark as Read
+                  </ButtonComponent>
+                  <ButtonComponent
+                    cssClass="e-danger w-full"
+                    onClick={handleDeleteNotification}
+                  >
+                    Delete Notification
+                  </ButtonComponent>
+                </div>
+              </>
+            ) : (
+              <p className="text-gray-500 text-center py-20">Select a notification to view details.</p>
+            )}
+          </div>
+        </div>
+  
+        {/* Take Action Dialog */}
+        <DialogComponent
+          header="Take Action"
+          visible={showDialog}
+          buttons={dialogButtons}
+          closeOnEscape={true}
+          showCloseIcon={true}
+          close={() => setShowDialog(false)}
+        >
+          <div className="p-4">
+            <p className="mb-4">What action would you like to take for this notification?</p>
+            <DropDownListComponent
+              dataSource={["View Application", "Reply to Message", "Reschedule Interview"]}
+              placeholder="Select Action"
+              className="w-full"
             />
-          </AccordionItemsDirective>
-        </AccordionComponent>
+          </div>
+        </DialogComponent>
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
 export default Notifications;
