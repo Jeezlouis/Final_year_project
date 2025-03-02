@@ -36,11 +36,15 @@ const Header = ({ toggleSidebar, fixedHeader }) => {
   return (
     <header className={headerClasses}>
       <div className="flex justify-between items-center">
-        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">Unintern</div>
+        <Link
+        to='/'
+        >
+        <div className="text-2xl font-bold cursor-pointer text-blue-600 dark:text-blue-400">Unintern</div>
+        </Link>
         {toggleSidebar && (
           <button
             onClick={toggleSidebar}
-            className="md:hidden text-gray-800 hover:text-blue-500 focus:outline-none"
+            className="md:hidden text-gray-800 hover:text-blue-500 dark:text-gray-50 dark:hover:text-blue-200 focus:outline-none"
           >
             <FaBars className="w-6 h-6" />
           </button>
